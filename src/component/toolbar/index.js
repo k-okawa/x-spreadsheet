@@ -91,43 +91,43 @@ export default class Toolbar {
       [
         this.undoEl = new Undo(),
         this.redoEl = new Redo(),
-        new Print(),
-        this.paintformatEl = new Paintformat(),
+        // new Print(),
+        // this.paintformatEl = new Paintformat(),
         this.clearformatEl = new Clearformat(),
       ],
+      // buildDivider(),
+      // [
+      //   this.formatEl = new Format(),
+      // ],
+      // buildDivider(),
+      // [
+      //   this.fontEl = new Font(),
+      //   this.fontSizeEl = new FontSize(),
+      // ],
       buildDivider(),
       [
-        this.formatEl = new Format(),
-      ],
-      buildDivider(),
-      [
-        this.fontEl = new Font(),
-        this.fontSizeEl = new FontSize(),
-      ],
-      buildDivider(),
-      [
-        this.boldEl = new Bold(),
-        this.italicEl = new Italic(),
-        this.underlineEl = new Underline(),
-        this.strikeEl = new Strike(),
+        // this.boldEl = new Bold(),
+        // this.italicEl = new Italic(),
+        // this.underlineEl = new Underline(),
+        // this.strikeEl = new Strike(),
         this.textColorEl = new TextColor(style.color),
       ],
       buildDivider(),
       [
         this.fillColorEl = new FillColor(style.bgcolor),
-        this.borderEl = new Border(),
-        this.mergeEl = new Merge(),
+        // this.borderEl = new Border(),
+        // this.mergeEl = new Merge(),
       ],
-      buildDivider(),
-      [
-        this.alignEl = new Align(style.align),
-        this.valignEl = new Valign(style.valign),
-        this.textwrapEl = new Textwrap(),
-      ],
-      buildDivider(),
+      // buildDivider(),
+      // [
+      //   this.alignEl = new Align(style.align),
+      //   this.valignEl = new Valign(style.valign),
+      //   this.textwrapEl = new Textwrap(),
+      // ],
+      // buildDivider(),
       [
         this.freezeEl = new Freeze(),
-        this.autofilterEl = new Autofilter(),
+        // this.autofilterEl = new Autofilter(),
         this.formulaEl = new Formula(),
         this.moreEl = new More(),
       ],
@@ -165,11 +165,12 @@ export default class Toolbar {
   }
 
   paintformatActive() {
-    return this.paintformatEl.active();
+    return false;
+    // return this.paintformatEl.active();
   }
 
   paintformatToggle() {
-    this.paintformatEl.toggle();
+    // this.paintformatEl.toggle();
   }
 
   trigger(type) {
@@ -185,26 +186,23 @@ export default class Toolbar {
     if (this.isHide) return;
     const { data } = this;
     const style = data.getSelectedCellStyle();
-    // console.log('canUndo:', data.canUndo());
     this.undoEl.setState(!data.canUndo());
     this.redoEl.setState(!data.canRedo());
-    this.mergeEl.setState(data.canUnmerge(), !data.selector.multiple());
-    this.autofilterEl.setState(!data.canAutofilter());
-    // this.mergeEl.disabled();
-    // console.log('selectedCell:', style, cell);
-    const { font, format } = style;
-    this.formatEl.setState(format);
-    this.fontEl.setState(font.name);
-    this.fontSizeEl.setState(font.size);
-    this.boldEl.setState(font.bold);
-    this.italicEl.setState(font.italic);
-    this.underlineEl.setState(style.underline);
-    this.strikeEl.setState(style.strike);
+    // this.mergeEl.setState(data.canUnmerge(), !data.selector.multiple());
+    // this.autofilterEl.setState(!data.canAutofilter());
+    // const { font, format } = style;
+    // this.formatEl.setState(format);
+    // this.fontEl.setState(font.name);
+    // this.fontSizeEl.setState(font.size);
+    // this.boldEl.setState(font.bold);
+    // this.italicEl.setState(font.italic);
+    // this.underlineEl.setState(style.underline);
+    // this.strikeEl.setState(style.strike);
     this.textColorEl.setState(style.color);
     this.fillColorEl.setState(style.bgcolor);
-    this.alignEl.setState(style.align);
-    this.valignEl.setState(style.valign);
-    this.textwrapEl.setState(style.textwrap);
+    // this.alignEl.setState(style.align);
+    // this.valignEl.setState(style.valign);
+    // this.textwrapEl.setState(style.textwrap);
     // console.log('freeze is Active:', data.freezeIsActive());
     this.freezeEl.setState(data.freezeIsActive());
   }
