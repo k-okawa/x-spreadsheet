@@ -964,4 +964,9 @@ export default class Sheet {
       top: rows.height,
     };
   }
+
+  setSelectCell(ri, ci) {
+    selectorSet.call(this, false, ri, ci);
+    scrollbarMove.call(this);
+  }
 }
