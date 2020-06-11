@@ -966,7 +966,10 @@ export default class Sheet {
   }
 
   setSelectCell(ri, ci) {
+    const [fri, fci] = this.data.freeze;
+    this.freeze(0, 0);
     selectorSet.call(this, false, ri, ci);
     scrollbarMove.call(this);
+    this.freeze(fri,fci);
   }
 }
